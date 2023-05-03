@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/main.css">
     <title>Object Carousel</title>
 </head>
 <body>
     
+    <div id="main-wrapper">
+
+        <div id="carousel">
+
+            <div id="big-img">
+                <img src="./img/01.webp" alt="">
+                <div id="big-img-attributes">
+                    <h2>Marvel's Spiderman Miles Morales</h2>
+                    <p>Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.</p>
+                </div>
+            </div>
+            <div id="thumbnails">
+                <button id="prev-button" class="button"><i class="fa-solid fa-circle-arrow-up"></i></button>
+                <button id="next-button" class="button"><i class="fa-solid fa-circle-arrow-down"></i></button>
+
+                <img src="./img/01.webp" alt="" class="thumb unselected">
+                <img src="./img/01.webp" alt="" class="thumb unselected">
+                <img src="./img/01.webp" alt="" class="thumb unselected">
+                <img src="./img/01.webp" alt="" class="thumb unselected">
+                <img src="./img/01.webp" alt="" class="thumb unselected">
+            </div>
+        </div>
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>
