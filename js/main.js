@@ -28,10 +28,9 @@ const jumbotron_description = document.getElementById("jumbotron-description");
 const thumbnails = document.getElementById("thumbnails");
 let currentSlide = 0;
 
-function addToJumbotron(HTMLelement, objectaArray, currentSlide, title, description){
+function addToJumbotron(HTMLelement, objectaArray, currentSlide){
 
     objectaArray.forEach((element, index) => {
-
         let newImg = document.createElement("img");
         newImg.src = `./${element.image}`;
         newImg.alt = element.title;
@@ -41,9 +40,10 @@ function addToJumbotron(HTMLelement, objectaArray, currentSlide, title, descript
         newImg.classList.add("slide");
         HTMLelement.append(newImg);
     })
+    setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
 }
 
-addToJumbotron(jumbotron, images, currentSlide, jumbtron_title, jumbotron_description);
+addToJumbotron(jumbotron, images, currentSlide);
 
 function addToThumbnails(HTMLelement, objectaArray, currentSlide){
 
@@ -57,7 +57,6 @@ function addToThumbnails(HTMLelement, objectaArray, currentSlide){
         }
         HTMLelement.append(newImg);
     })
-    setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
 }
 
 function setTitleAndDescription(objectaArray, currentSlide, titleElement, descriptionElement){
