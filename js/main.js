@@ -21,3 +21,95 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+const jumbotron = document.getElementById("jumbotron");
+const jumbtron_title = document.getElementById("jumbotron-title");
+const jumbotron_description = document.getElementById("jumbotron-description");
+const thumbnails = document.getElementById("thumbnails");
+let currentSlide = 0;
+
+function addToJumbotron(HTMLelement, objectaArray, currentSlide, title, description){
+
+    objectaArray.forEach((element, index) => {
+
+        let newImg = document.createElement("img");
+        newImg.src = `./${element.image}`;
+        newImg.alt = element.title;
+        if(index != currentSlide){
+            newImg.classList.add("hidden");
+        }
+        newImg.classList.add("slide");
+        HTMLelement.append(newImg);
+    })
+}
+
+addToJumbotron(jumbotron, images, currentSlide, jumbtron_title, jumbotron_description);
+
+function addToThumbnails(HTMLelement, objectaArray, currentSlide){
+
+    objectaArray.forEach((element, index) => {
+        let newImg = document.createElement("img");
+        newImg.src = `./${element.image}`;
+        newImg.alt = element.title;
+        newImg.classList.add("thumb");
+        if(index === currentSlide){
+            newImg.classList.add("selected");
+        }
+        HTMLelement.append(newImg);
+    })
+    setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
+}
+
+function setTitleAndDescription(objectaArray, currentSlide, titleElement, descriptionElement){
+    titleElement.innerText = objectaArray[currentSlide].title;
+    descriptionElement.innerText = objectaArray[currentSlide].text;
+}
+
+addToThumbnails(thumbnails, images, currentSlide);
+
+const prev_button = document.getElementById("prev-button");
+const next_button = document.getElementById("next-button");
+
+const jumbotronElements = document.getElementsByClassName("slide");
+const thumbnailsElements = document.getElementsByClassName("thumb");
+
+prev_button.addEventListener("click", function(){
+    if(currentSlide>0){
+        jumbotronElements[currentSlide].classList.add("hidden");
+        thumbnailsElements[currentSlide].classList.remove("selected");
+        currentSlide--;
+
+        jumbotronElements[currentSlide].classList.remove("hidden");
+        thumbnailsElements[currentSlide].classList.add("selected");
+        setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
+    }else{
+        jumbotronElements[currentSlide].classList.add("hidden");
+        thumbnailsElements[currentSlide].classList.remove("selected");
+        currentSlide = (jumbotronElements.length-1);
+
+        jumbotronElements[currentSlide].classList.remove("hidden");
+        thumbnailsElements[currentSlide].classList.add("selected");
+        setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
+    }
+});
+
+
+next_button.addEventListener("click", function(){
+    if(currentSlide< jumbotronElements.length-1){
+        jumbotronElements[currentSlide].classList.add("hidden");
+        thumbnailsElements[currentSlide].classList.remove("selected");
+
+        currentSlide++;
+        jumbotronElements[currentSlide].classList.remove("hidden");
+        thumbnailsElements[currentSlide].classList.add("selected");
+        setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
+    }else{
+        jumbotronElements[currentSlide].classList.add("hidden");
+        thumbnailsElements[currentSlide].classList.remove("selected");
+        currentSlide = 0;
+
+        jumbotronElements[currentSlide].classList.remove("hidden");
+        thumbnailsElements[currentSlide].classList.add("selected");
+        setTitleAndDescription(images, currentSlide, jumbtron_title, jumbotron_description);
+    }
+});

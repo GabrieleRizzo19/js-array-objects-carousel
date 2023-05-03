@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     border: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #main-wrapper{
@@ -20,19 +21,23 @@
     display: flex;
 }
 
-#big-img{
+#jumbotron{
     width: 75%;
     height: 100%;
     position: relative;
 }
 
-#big-img > img{
+.slide{
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-#big-img-attributes{
+.hidden{
+    display: none;
+}
+
+#jumbotron-attributes{
     text-align: right;
     position: absolute;
     bottom: 0;
@@ -40,8 +45,8 @@
     color: white;
 }
 
-#big-img-attributes *{
-    margin-bottom: 16px;
+#jumbotron-attributes *{
+    margin-bottom: 8px;
 }
 
 #thumbnails{
@@ -55,11 +60,14 @@
     width: 100%;
     display: block;
     object-fit: cover;
-}
-
-.unselected{
     opacity: 0.8;
 }
+
+.selected{
+    border: 3px solid greenyellow;
+    opacity: 1;
+}
+
 
 .button{
     background-color: transparent;
